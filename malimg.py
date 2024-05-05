@@ -28,8 +28,8 @@ class MalConvNet(nn.Module):
         self.bn2 = nn.BatchNorm2d(48)
         self.bn3 = nn.BatchNorm2d(48)
 
-        # Increase pooling stride to reduce spatial dimensions more significantly
-        self.pool = nn.MaxPool2d(2, stride=2)  # Increased stride to 2
+        # max pooling layer
+        self.pool = nn.MaxPool2d(2, stride=2)  
 
         # fully connected layers
         self.fc = nn.Linear(12288, 128)  # Adjusted for reduced feature map size
