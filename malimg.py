@@ -18,10 +18,10 @@ classNum  = 25
 class MalConvNet(nn.Module):
     def __init__(self, num_classes=25):
         super(MalConvNet, self).__init__()
-        # Reduce the number of filters in each convolutional layer
-        self.conv1 = nn.Conv2d(1, 32, kernel_size=5, padding=2)  # Reduced from 50 to 32
-        self.conv2 = nn.Conv2d(32, 48, kernel_size=3, padding=1)  # Reduced from 70 to 48
-        self.conv3 = nn.Conv2d(48, 48, kernel_size=3, padding=1)  # Same as conv2
+        # convolutional layer
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=5, padding=2)  
+        self.conv2 = nn.Conv2d(32, 48, kernel_size=3, padding=1)  
+        self.conv3 = nn.Conv2d(48, 48, kernel_size=3, padding=1)  
 
         # Batch normalization layers
         self.bn1 = nn.BatchNorm2d(32)
@@ -31,8 +31,8 @@ class MalConvNet(nn.Module):
         # Increase pooling stride to reduce spatial dimensions more significantly
         self.pool = nn.MaxPool2d(2, stride=2)  # Increased stride to 2
 
-        # Reduce the size of the fully connected layers
-        self.fc = nn.Linear(49152, 128)  # Adjusted for reduced feature map size
+        # fully connected layers
+        self.fc = nn.Linear(12288, 128)  # Adjusted for reduced feature map size
         self.fc_output = nn.Linear(128, num_classes)
 
     def forward(self, x):
